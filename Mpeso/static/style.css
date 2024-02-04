@@ -1,0 +1,8 @@
+body {
+  background-color: rgb(41, 41, 41);
+}
+
+.chart {
+  width: 100%;
+  min-height: 400px;
+}

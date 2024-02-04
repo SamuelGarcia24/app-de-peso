@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 col-sm-12 text-center">
+            <div class="container">
+                <h2 class="display-6 fs-2 text">Peso actual: {{pesoa}}kg</h2>
+                <h2 class="display-6 fs-2 text">Peso ideal: {{pesoi}}kg</h2>
+                <h2 class="display-6 fs-2 text">Peso a bajar: {{pesoAbajar}}kg</h2>
+                <h2 class="display-6 fs-2 text">IMC: {{imc}}</h2>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <div class="container">
+                    <label class="form-label" for="peso">Añade tu peso actual:</label>
+                </div>
+                <input class="form-control" type="number" id="peso" name="peso" required min="0" oninput="validity.valid||(value='');">
+                <div class="container mt-3">
+                    <button class="btn btn-success">Actualizar</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-8 offset-md-2 col-sm-12 offset-sm-0">
+            <div id="chart" class="chart"></div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medidor de peso</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">No mas revolcones</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                  <a href="{% url 'miprogreso' %}" class="nav-link" aria-current="page">Mi progreso</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'peso' %}" class="nav-link" >Datos personales</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'logout' %}" class="nav-link" >Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                  <a href="{% url 'home' %}" class="nav-link" >Home</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'reggister' %}" class="nav-link" >Register</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'login' %}" class="nav-link" >Login</a>
+                </li>
+                {% endif %}
+              </ul>
+        </div>
+      </div>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="{% static 'main.js' %}"></script>
+    {% block content %} {% endblock %}
+  </body>
+</html>

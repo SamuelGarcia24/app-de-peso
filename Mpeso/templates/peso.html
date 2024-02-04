@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 text-center offset-3">
+            <h1>Hola {{user.username}}</h1>
+            <h2 class="display-6 fs-2 mb-3">Llena este formulario para empezar con tu experiencia:</h2>
+            <form method="post" class="form-control">
+                {% csrf_token %}
+                <label class="form-label" for="pesoActual">Peso actual (en kilogramos)</label>
+                <input class="form-control" type="number" name="pesoActual" id="pesoActual" value="{{ pesoActual }}" required>
+
+                <label class="form-label" for="pesoIdeal">Peso ideal (en kilogramos)</label>
+                <input class="form-control" type="number" name="pesoIdeal" id="pesoIdeal" value="{{ pesoIdeal }}" required>
+
+                <label class="form-label" for="altura">Altura (en cetimetros)</label>
+                <input class="form-control" type="number" name="altura" id="altura" value="{{ altura }}" required>
+
+                <button class="btn btn-success mt-3">
+                    Continuar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
